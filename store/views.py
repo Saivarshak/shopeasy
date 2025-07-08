@@ -13,3 +13,7 @@ def category_women(request):
 
 def category_kids(request):
     return render(request, 'category-kids.html')
+
+
+def login(request):
+    return render(request, 'login.html')
