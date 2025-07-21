@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>ShopEase - Women</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -17,7 +18,7 @@
             brandDark: '#2f2f2f',
             brandMuted: '#999999',
             brandLight: '#fdfdfd',
-            beige: '#dbbe9c'
+            beige: '#ff28b090'
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif']
@@ -26,29 +27,62 @@
       }
     }
   </script>
+  <style>
+    .card{
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px); /* Safari support */
+      padding: 20px;
+      border-radius:2px;
+    }
+    .footersection{
+      margin-top:100px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color:#FFB6C1;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px); /* Safari support */
+      padding: 20px;
+      border-radius:2px;
+    }
+    .topbanner{
+      background-color:#FFB6C1;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px); /* Safari support */
+      padding: 20px;
+      border-radius:2px;
+    }
+    .heading{
+      font-family: "Share Tech", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+  </style>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style> body { font-family: 'Inter', sans-serif; } </style>
 </head>
-<body class="bg-brandLight text-brandDark">
+<body class="bg-brandLight text-brandDark"
+      style="background-image: url('{% static 'images/womenbg.jpg' %}'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
 
 <!-- Header -->
-<header class="bg-beige shadow-md py-4">
+<header class="topbanner shadow-md py-4">
     <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
       <a href="/">
-        <img src="{% static 'images/logo1.png' %}" alt="ShopEase Logo" class="h-12 sm:h-16 md:h-20 w-auto" />
+        <img src="{% static 'images/logo1.png' %}" alt="ShopEase Logo" class="h-12 sm:h-16 md:h-20 w-auto "/>
       </a>
-      <h1 class="text-xl sm:text-2xl font-bold text-brandDark">Women's Collection</h1>
+      <h1 class="text-xl sm:text-2xl font-bold heading">Women's Collection</h1>
       <a href="/" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full text-sm sm:text-base transition">
         ← Back to Home
       </a>
     </div>
   </header>
 
-<section class="max-w-7xl mx-auto px-6 py-16">
-  <h2 class="text-3xl font-semibold text-center mb-12 text-brandDark">Explore Women's Subcategories</h2>
+<section class="max-w-7xl mx-auto px-6 py-16 mr-14 mt-10">
+  <h2 class="text-3xl font-semibold text-center mb-12  heading">Women's Gallery</h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
 
-    <div class="rounded-xl overflow-hidden shadow hover:shadow-xl transition transform hover:scale-105">
+    <div class="rounded-xl overflow-hidden shadow hover:shadow-xl transition transform hover:scale-105 bg-white card">
         <img src="{% static 'images/women-ethnic.png' %}" alt="T-Shirts" class="w-full h-64 object-cover">
         <div class="p-5 text-center">
         <h3 class="text-xl font-semibold text-brandDark">Ethnic Wear</h3>
@@ -56,7 +90,7 @@
       </div>
     </div>
 
-    <div class="rounded-xl overflow-hidden shadow hover:shadow-xl transition transform hover:scale-105">
+    <div class="rounded-xl overflow-hidden shadow hover:shadow-xl transition transform hover:scale-105 bg-white card">
         <img src="{% static 'images/women-western.png' %}" alt="Western Wear" class="w-full h-64 object-cover">
         <div class="p-5 text-center">
         <h3 class="text-xl font-semibold text-brandDark">Western Wear</h3>
@@ -64,7 +98,7 @@
       </div>
     </div>
 
-    <div class="rounded-xl overflow-hidden shadow hover:shadow-xl transition transform hover:scale-105">
+    <div class="rounded-xl overflow-hidden shadow hover:shadow-xl transition transform hover:scale-105 bg-white card">
         <img src="{% static 'images/women-footwear1.png' %}" alt="Footwear" class="w-full h-64 object-cover">
         <div class="p-5 text-center">
         <h3 class="text-xl font-semibold text-brandDark">Footwear</h3>
@@ -72,7 +106,7 @@
       </div>
     </div>
 
-    <div class="rounded-xl overflow-hidden shadow hover:shadow-xl transition transform hover:scale-105">
+    <div class="rounded-xl overflow-hidden shadow hover:shadow-xl transition transform hover:scale-105 bg-white card">
         <img src="{% static 'images/women-bags.png' %}" alt="Bags & Accessories" class="w-full h-64 object-cover">
         <div class="p-5 text-center">
         <h3 class="text-xl font-semibold text-brandDark">Bags & Accessories</h3>
@@ -83,7 +117,7 @@
   </div>
 </section>
 
-<footer class="bg-beige py-6 border-t mt-12">
+<footer class="footersection py-6 border-t">
   <div class="w-full px-10 text-center text-sm text-brandMuted">
     &copy; 2025 <strong class="text-brandDark">ShopEase</strong>. All rights reserved. | Built by <span class="text-brandCoral font-semibold">MR Technologies</span>
   </div>
