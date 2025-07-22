@@ -27,6 +27,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100px;
     }
 
     .search-box {
@@ -35,7 +36,6 @@
       border: 2px solid #ccc;
       border-radius: 5px 0 0 5px;
       outline: none;
-      width: 250px;
     }
 
     .search-button {
@@ -94,30 +94,36 @@
     <div class="flex-1">
       <a href="/">
         <img src="{% static 'images/logo1.png' %}" alt="ShopEase Logo"
-             class="h-10 sm:h-14 md:h-20 w-auto" />
+             class="h-10 sm:h-14 md:h-20 w-35" />
       </a>
     </div>
 
     <!-- Center: Search Bar -->
+      <div class="search-container justify-start items-start flex-1">
+        <input type="text" class="search-box" placeholder="Search for products..." />
+        <button class="search-button">Search</button>
+      </div>
 
-    <!-- Center: Navigation Links -->
-    <nav class="flex-1 flex justify-center space-x-6 text-base icon ">
-      
+    
+
+    <!-- Navigation Links -->
+    
+    <div class="flex-1 flex justify-end items-center space-x-6">
+      <nav class="flex-1 justify-end flex space-x-6 text-base icon ">
       <a href="#" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full font-medium transition">Home</a>
       <a href="#" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full font-medium transition">Products</a>
-      <a href="#" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full font-medium transition">Cart</a>
-      {% comment %} <a href="login" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full font-medium transition">Login</a> {% endcomment %}
-    </nav>
-
-    <!-- Right: Contact Us Button -->
-    <div class="flex-1 flex justify-end">
-      <button class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full font-medium transition">
-        Contact us
-      </button>
-      <a href="login" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full font-medium transition ml-4">Login</a>
+      <a href="#" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full font-medium transition">Contact Us</a>
+      <a href="login" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full font-medium transition">Login</a>
+      </nav>
     </div>
 
 
+<button class="m-8 mt-6">
+  <a href="#">
+    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor" margin-right="10px" margin-left="10px" class="bi bi-bag-check-fill" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0m-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+    </svg>
+  </button>
   </div>
 </header>
 
