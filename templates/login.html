@@ -16,39 +16,52 @@
       font-family: 'Poppins', sans-serif;
       display: flex;
       height: 100vh;
-      background-color: #e1e1e1ff;
+      align-items: center;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url('https://res.cloudinary.com/ds8lgedtc/image/upload/v1753773801/black-friday-sales-sign-neon-light_fauoc5.jpg');
     }
 
     .container {
       display: flex;
-      width: 100%;
+      width: 50%;
+      margin-left: 100px;
       max-width: 1200px;
-      margin: auto;
-      background: white;
+      background: lightblue;
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px); /* Safari support */
+      
     }
+    .logincard{
+      width:500px;
+      margin-left: 300px;
+      background: rgba(255, 255, 255, 0.08); /* Transparent layer */
+      backdrop-filter: blur(10px); /* Blurs background */
+      border: 1px solid rgba(255, 255, 255, 0);
+      border-radius: 10px;
+      color: white; 
+      padding: 20px;
 
-    .image-section {
+    }
+    .image-section{
       flex:1;
       background: url('https://img.freepik.com/premium-photo/top-view-online-shopping-concept-with-credit-card-smart-phone-computer-isolated-office-yellow-table-background_315337-5980.jpg') no-repeat center center/cover;
+      background: url('https://static.vecteezy.com/system/resources/previews/014/471/815/original/shopping-cart-business-icon-flat-cartoon-for-the-business-idea-web-design-illustration-free-vector.jpg') no-repeat center center/cover; 
       position: relative;
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
     }
+    .logincard:hover {
+      transform: scale(1.05);
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.08);
+}
 
-    .image-section::after {
-      content: "Shop Smart Shop Now";
-      position: absolute;
-      bottom: 190px;
-      left: 100px;
-      color: white;
-      font-size: 30px;
-      font-weight: 700;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    }
 
     .form-section {
       flex: 1;
@@ -61,11 +74,13 @@
     .form-section h2 {
       margin-bottom: 20px;
       font-size: 32px;
-      color: #333;
+      color: white;
+
     }
 
     .form-group {
       margin-bottom: 20px;
+      color: white;
     }
 
     .form-group label {
@@ -86,6 +101,7 @@
     .form-group input:focus {
       outline: none;
       border-color: #007bff;
+
     }
 
     .btn-login {
@@ -102,11 +118,13 @@
 
     .btn-login:hover {
       background-color: #0056b3;
+      color: white;
     }
 
     .signup-link {
       margin-top: 20px;
       text-align: center;
+      
     }
 
     .signup-link a {
@@ -131,7 +149,7 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="logincard">
     <div class="image-section">
       <p></p>
     </div>
