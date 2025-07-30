@@ -18,3 +18,6 @@ def category_kids(request):
 def login(request):
     return render(request, 'login.html')    
 
+
+def mens_tshirts(request):
+    return render(request, 'mens-tshirts.html')

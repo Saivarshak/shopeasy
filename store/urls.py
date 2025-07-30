@@ -23,4 +23,5 @@ urlpatterns = [
     path('category-women/', views.category_women, name='category_women'),
     path('category-kids/', views.category_kids, name='category_kids'),
     path('login/',views.login,name='login'),
+    path('category-men/mens_tshirts/', views.mens_tshirts, name='mens_tshirts'),
 ]
