@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,12 +50,12 @@
     }
     .image-section{
       flex:1;
-      background: url('https://img.freepik.com/premium-photo/top-view-online-shopping-concept-with-credit-card-smart-phone-computer-isolated-office-yellow-table-background_315337-5980.jpg') no-repeat center center/cover;
       background: url('https://static.vecteezy.com/system/resources/previews/014/471/815/original/shopping-cart-business-icon-flat-cartoon-for-the-business-idea-web-design-illustration-free-vector.jpg') no-repeat center center/cover; 
       position: relative;
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
+      margin: 0px;
     }
     .logincard:hover {
       transform: scale(1.05);
@@ -74,7 +75,7 @@
     .form-section h2 {
       margin-bottom: 20px;
       font-size: 32px;
-      color: white;
+      color: black;
 
     }
 
@@ -149,9 +150,9 @@
   </style>
 </head>
 <body>
-  <div class="logincard">
+  <div class="container">
     <div class="image-section">
-      <p></p>
+       <img src="{% static 'images/loginlogo.png' %}" alt="Logo" style="height: 200px; width: 200px;"/>
     </div>
     <div class="form-section">
       <h2>Welcome Back!</h2>
@@ -164,7 +165,7 @@
           <label for="password">Password</label>
           <input type="password" id="password" placeholder="Enter your password" required />
         </div>
-        <button type="submit" class="btn-login">Login</button>
+        <a href="#"><button type="submit" class="btn-login">Login</button></a>
         <div class="signup-link">
           Don't have an account? <a href="#">Sign up</a>
         </div>
