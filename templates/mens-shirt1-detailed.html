@@ -1,0 +1,128 @@
+{% load static%}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Van Heusen Formal Printed Shirt</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #fff;
+      color: #111;
+    }
+    header {
+      background-color: #232f3e;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      left:0px;
+      right:0px;
+    }
+    .search-bar input {
+      width: 300px;
+      padding: 8px;
+    }
+    main {
+      display: flex;
+      padding: 20px;
+    }
+    .product-images {
+      width: 30%;
+    }
+    .product-images img {
+      width: 100%;
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+    }
+    .product-details {
+      width: 40%;
+      padding: 0 20px;
+    }
+    .product-details h1 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .price {
+      color: #B12704;
+      font-size: 26px;
+      font-weight: bold;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: #565959;
+      margin-left: 10px;
+    }
+    .discount {
+      color: #007600;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    .buy-section {
+      width: 30%;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      height: fit-content;
+    }
+    .buy-btn, .cart-btn {
+      background-color: #FFD814;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      margin: 10px 0;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    .buy-btn {
+      background-color: #FFA41C;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"></div>
+    <img src="{% static 'images/logo1.png' %}" alt="ShopEase Logo" style="height: 100px; width: 100px;">
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+    </div>
+  </header>
+
+  <main>
+    <div class="product-images">
+      <img src="https://m.media-amazon.com/images/I/612YHoWBkIL._SX679_.jpg" alt="Shirt">
+    </div>
+
+    <div class="product-details">
+      <h1>Van Heusen Formal Printed Shirt for Men | Premium Cotton | Full Sleeves | Slim Fit | Breathable Fabric</h1>
+      <p>⭐⭐⭐⭐☆ (328 reviews)</p>
+      <div>
+        <span class="price">₹936</span>
+        <span class="old-price">₹1,899</span>
+        <span class="discount">-51%</span>
+      </div>
+      <p>Inclusive of all taxes</p>
+    </div>
+
+    <div class="buy-section">
+      <p class="price">₹936</p>
+      <p>FREE Delivery by Wednesday, 13 August</p>
+      <button class="cart-btn">Add to Cart</button>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+  </main>
+
+
+  
+</body>
+</html>

@@ -21,3 +21,39 @@ def login(request):
 
 def mens_tshirts(request):
     return render(request, 'mens-tshirts.html') 
+
+
+def mens_shirts(request):
+    return render(request, 'mens-shirts.html')
+
+
+def mens_jeans(request):
+    return render(request, 'mens-jeans.html')
+
+def womens_ethnicware(request):
+    return render(request, 'women-ethnicware.html')
+
+def womens_westernware(request):
+    return render(request, 'women-westernware.html')
+
+def womens_footwear(request):
+    return render(request,'women-footware.html')
+
+
+
+def kids_tshirts(request):
+    return render(request, 'kids-tshirts.html')
+
+
+def kids_dresses(request):
+    return render(request, 'kids-dress.html')
+
+def kids_toys(request):
+    return render(request, 'kids-toys.html')
+
+def kids_footwear(request):
+    return render(request, 'kids-footware.html')
+
+
+def mens_shirt1_detailed(request):
+    return render(request, 'mens-shirt1-detailed.html')

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stylish T-Shirts for Men</title>
+  <title>Dresse's from kids</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
@@ -14,15 +14,31 @@
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
-
     body {
-      background-image: url("{% static 'images/menstshirts.jpg' %}");
-      background-attachment: fixed; /* ✅ Keeps background fixed */
-
+      background-image: url("{% static 'images/kidsbg.jpg' %}");
+      height: 100%;
+      width: 100%;
       background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      background-position: left;
+      background-attachment: fixed; /* ✅ Keeps background fixed */
+      position: relative;
       padding: 20px;
+    }
+    /* Transparent overlay only on background */
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.13); /* Semi-transparent black */
+      z-index: 0;
+    }
+
+    header, .search-bar, .container,.logo {
+      position: relative;
+      z-index: 1;
     }
 
     header {
@@ -64,7 +80,9 @@
       gap: 20px;
       padding: 10px;
       max-width: 1300px;
-      margin-right:500px;
+      margin: 0 auto; /* Center the grid */
+      margin-right: 20px;
+
     }
 
     .card {
@@ -119,8 +137,9 @@
       background: linear-gradient(to right, #0056b3, #007bff);
     }
     .logo{
-      width: 100px;
       height: 100px;
+      width: 100px;
+      fixed:top;
     }
   </style>
 </head>
@@ -132,7 +151,8 @@
       </a>
     </div>
   <header>
-    <h1>Stylish T-Shirts for Men</h1>
+    
+    <h1>Dresse's for Kids</h1>
     <div class="search-bar">
       <input type="text" id="searchInput" placeholder="Search shirts..." />
     </div>
@@ -140,9 +160,9 @@
 
   <div class="container" id="shirtContainer">
     <!-- Product Cards -->
-    {% comment %} First row of shirts {% endcomment %}
-    <div class="card" data-name="casual black shirt">
-      <img src="https://m.media-amazon.com/images/I/61lnT3TBSsL._SY741_.jpg" alt="Black Shirt" />
+    <!-- First row -->
+    <div class="card" data-name="casual black shirt style 1">
+      <img src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2025/APRIL/11/5NNLLYxI_7a24b4de7e8740ed9abb442eb77d334c.jpg" alt="Black Shirt" />
       <div class="card-content">
         <h3>Casual Black Shirt</h3>
         <span class="price">₹799</span>
@@ -150,8 +170,8 @@
       </div>  
     </div>
 
-    <div class="card" data-name="white slim fit shirt">
-      <img src="https://m.media-amazon.com/images/I/61zkKcR2k2L._SY741_.jpg" alt="White Shirt" />
+    <div class="card" data-name="white slim fit shirt style 1">
+      <img src="https://babynmeindia.com/cdn/shop/files/DSC9347copy.jpg?v=1740925150&width=1946" alt="White Shirt" />
       <div class="card-content">
         <h3>White Slim Fit Shirt</h3>
         <span class="price">₹899</span>
@@ -159,8 +179,8 @@
       </div>
     </div>
 
-    <div class="card" data-name="blue denim shirt">
-      <img src="https://m.media-amazon.com/images/I/612EIYgTnrL._SY741_.jpg" alt="Blue Denim Shirt" />
+    <div class="card" data-name="blue denim shirt style 1">
+      <img src="https://www.tibertaber.com/cdn/shop/products/8.1.jpg?v=1673245762" alt="Blue Denim Shirt" />
       <div class="card-content">
         <h3>Blue Denim Shirt</h3>
         <span class="price">₹999</span>
@@ -168,8 +188,8 @@
       </div>
     </div>
 
-    <div class="card" data-name="checked casual shirt">
-      <img src="https://m.media-amazon.com/images/I/41QaGZ2a4BL.jpg" alt="Checked Shirt" />
+    <div class="card" data-name="checked casual shirt style 1">
+      <img src="https://i.pinimg.com/736x/c1/85/53/c185530254026f7c26f813aee92c4d93.jpg" alt="Checked Shirt" />
       <div class="card-content">
         <h3>Checked Casual Shirt</h3>
         <span class="price">₹750</span>
@@ -177,9 +197,9 @@
       </div>
     </div>
 
-    {% comment %} Second row of shirts {% endcomment %}
-    <div class="card" data-name="casual black shirt">
-      <img src="https://m.media-amazon.com/images/I/71eUwDk8z+L._SX569_.jpg" alt="Black Shirt" />
+    <!-- Second row -->
+    <div class="card" data-name="casual black shirt style 2">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaq5hXdd6Igrbv0rZ1XyQELiN4PsU0lrZJkA&s" alt="Black Shirt" />
       <div class="card-content">
         <h3>Casual Black Shirt</h3>
         <span class="price">₹799</span>
@@ -187,8 +207,8 @@
       </div>
     </div>
 
-    <div class="card" data-name="white slim fit shirt">
-      <img src="https://m.media-amazon.com/images/I/713n+TxyfCL._SX569_.jpg" alt="White Shirt" />
+    <div class="card" data-name="white slim fit shirt style 2">
+      <img src="https://www.fayonkids.com/cdn/shop/files/manufactured-by-fayon-kids-noida-u-p-white-waist-coat-with-pant-and-shirt-for-boys-40946021368064.jpg?v=1715939762&width=533" alt="White Shirt" />
       <div class="card-content">
         <h3>White Slim Fit Shirt</h3>
         <span class="price">₹899</span>
@@ -196,8 +216,8 @@
       </div>
     </div>
 
-    <div class="card" data-name="blue denim shirt">
-      <img src="https://m.media-amazon.com/images/I/81vHlgI1+dL._SX569_.jpg" alt="Blue Denim Shirt" />
+    <div class="card" data-name="blue denim shirt style 2">
+      <img src="https://www.jiomart.com/images/product/original/rvs2nflush/fashion-dream-girls-teal-blue-foil-printed-georgette-pack-of-1-dress-product-images-rvs2nflush-0-202302241139.jpg?im=Resize=(500,630)" alt="Blue Denim Shirt" />
       <div class="card-content">
         <h3>Blue Denim Shirt</h3>
         <span class="price">₹999</span>
@@ -205,85 +225,8 @@
       </div>
     </div>
 
-    <div class="card" data-name="checked casual shirt">
-      <img src="https://m.media-amazon.com/images/I/61rI1yN4cSL._SY741_.jpg" alt="Checked Shirt" />
-      <div class="card-content">
-        <h3>Checked Casual Shirt</h3>
-        <span class="price">₹750</span>
-        <a href="#" class="btn">View Product</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="container" id="shirtContainer">
-    <!-- Product Cards -->
-    {% comment %} First row of shirts {% endcomment %}
-    <div class="card" data-name="casual black shirt">
-      <img src="https://m.media-amazon.com/images/I/61lnT3TBSsL._SY741_.jpg" alt="Black Shirt" />
-      <div class="card-content">
-        <h3>Casual Black Shirt</h3>
-        <span class="price">₹799</span>
-        <a href="#" class="btn">View Product</a>
-      </div>  
-    </div>
-
-    <div class="card" data-name="white slim fit shirt">
-      <img src="https://m.media-amazon.com/images/I/61zkKcR2k2L._SY741_.jpg" alt="White Shirt" />
-      <div class="card-content">
-        <h3>White Slim Fit Shirt</h3>
-        <span class="price">₹899</span>
-        <a href="#" class="btn">View Product</a>
-      </div>
-    </div>
-
-    <div class="card" data-name="blue denim shirt">
-      <img src="https://m.media-amazon.com/images/I/612EIYgTnrL._SY741_.jpg" alt="Blue Denim Shirt" />
-      <div class="card-content">
-        <h3>Blue Denim Shirt</h3>
-        <span class="price">₹999</span>
-        <a href="#" class="btn">View Product</a>
-      </div>
-    </div>
-
-    <div class="card" data-name="checked casual shirt">
-      <img src="https://m.media-amazon.com/images/I/41QaGZ2a4BL.jpg" alt="Checked Shirt" />
-      <div class="card-content">
-        <h3>Checked Casual Shirt</h3>
-        <span class="price">₹750</span>
-        <a href="#" class="btn">View Product</a>
-      </div>
-    </div>
-
-    {% comment %} Second row of shirts {% endcomment %}
-    <div class="card" data-name="casual black shirt">
-      <img src="https://m.media-amazon.com/images/I/71eUwDk8z+L._SX569_.jpg" alt="Black Shirt" />
-      <div class="card-content">
-        <h3>Casual Black Shirt</h3>
-        <span class="price">₹799</span>
-        <a href="#" class="btn">View Product</a>
-      </div>
-    </div>
-
-    <div class="card" data-name="white slim fit shirt">
-      <img src="https://m.media-amazon.com/images/I/713n+TxyfCL._SX569_.jpg" alt="White Shirt" />
-      <div class="card-content">
-        <h3>White Slim Fit Shirt</h3>
-        <span class="price">₹899</span>
-        <a href="#" class="btn">View Product</a>
-      </div>
-    </div>
-
-    <div class="card" data-name="blue denim shirt">
-      <img src="https://m.media-amazon.com/images/I/81vHlgI1+dL._SX569_.jpg" alt="Blue Denim Shirt" />
-      <div class="card-content">
-        <h3>Blue Denim Shirt</h3>
-        <span class="price">₹999</span>
-        <a href="#" class="btn">View Product</a>
-      </div>
-    </div> 
-
-    <div class="card" data-name="checked casual shirt">
-      <img src="https://m.media-amazon.com/images/I/61rI1yN4cSL._SY741_.jpg" alt="Checked Shirt" />
+    <div class="card" data-name="checked casual shirt style 2">
+      <img src="https://images.meesho.com/images/products/409390317/hgbdg_512.webp?width=512" alt="Checked Shirt" />
       <div class="card-content">
         <h3>Checked Casual Shirt</h3>
         <span class="price">₹750</span>
@@ -295,9 +238,9 @@
 
   <div class="container" id="shirtContainer">
     <!-- Product Cards -->
-    {% comment %} First row of shirts {% endcomment %}
-    <div class="card" data-name="casual black shirt">
-      <img src="https://m.media-amazon.com/images/I/61lnT3TBSsL._SY741_.jpg" alt="Black Shirt" />
+    <!-- First row -->
+    <div class="card" data-name="casual black shirt style 1">
+      <img src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2025/APRIL/11/5NNLLYxI_7a24b4de7e8740ed9abb442eb77d334c.jpg" alt="Black Shirt" />
       <div class="card-content">
         <h3>Casual Black Shirt</h3>
         <span class="price">₹799</span>
@@ -305,8 +248,8 @@
       </div>  
     </div>
 
-    <div class="card" data-name="white slim fit shirt">
-      <img src="https://m.media-amazon.com/images/I/61zkKcR2k2L._SY741_.jpg" alt="White Shirt" />
+    <div class="card" data-name="white slim fit shirt style 1">
+      <img src="https://babynmeindia.com/cdn/shop/files/DSC9347copy.jpg?v=1740925150&width=1946" alt="White Shirt" />
       <div class="card-content">
         <h3>White Slim Fit Shirt</h3>
         <span class="price">₹899</span>
@@ -314,8 +257,8 @@
       </div>
     </div>
 
-    <div class="card" data-name="blue denim shirt">
-      <img src="https://m.media-amazon.com/images/I/612EIYgTnrL._SY741_.jpg" alt="Blue Denim Shirt" />
+    <div class="card" data-name="blue denim shirt style 1">
+      <img src="https://www.tibertaber.com/cdn/shop/products/8.1.jpg?v=1673245762" alt="Blue Denim Shirt" />
       <div class="card-content">
         <h3>Blue Denim Shirt</h3>
         <span class="price">₹999</span>
@@ -323,8 +266,8 @@
       </div>
     </div>
 
-    <div class="card" data-name="checked casual shirt">
-      <img src="https://m.media-amazon.com/images/I/41QaGZ2a4BL.jpg" alt="Checked Shirt" />
+    <div class="card" data-name="checked casual shirt style 1">
+      <img src="https://i.pinimg.com/736x/c1/85/53/c185530254026f7c26f813aee92c4d93.jpg" alt="Checked Shirt" />
       <div class="card-content">
         <h3>Checked Casual Shirt</h3>
         <span class="price">₹750</span>
@@ -332,9 +275,9 @@
       </div>
     </div>
 
-    {% comment %} Second row of shirts {% endcomment %}
-    <div class="card" data-name="casual black shirt">
-      <img src="https://m.media-amazon.com/images/I/71eUwDk8z+L._SX569_.jpg" alt="Black Shirt" />
+    <!-- Second row -->
+    <div class="card" data-name="casual black shirt style 2">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaq5hXdd6Igrbv0rZ1XyQELiN4PsU0lrZJkA&s" alt="Black Shirt" />
       <div class="card-content">
         <h3>Casual Black Shirt</h3>
         <span class="price">₹799</span>
@@ -342,8 +285,8 @@
       </div>
     </div>
 
-    <div class="card" data-name="white slim fit shirt">
-      <img src="https://m.media-amazon.com/images/I/713n+TxyfCL._SX569_.jpg" alt="White Shirt" />
+    <div class="card" data-name="white slim fit shirt style 2">
+      <img src="https://www.fayonkids.com/cdn/shop/files/manufactured-by-fayon-kids-noida-u-p-white-waist-coat-with-pant-and-shirt-for-boys-40946021368064.jpg?v=1715939762&width=533" alt="White Shirt" />
       <div class="card-content">
         <h3>White Slim Fit Shirt</h3>
         <span class="price">₹899</span>
@@ -351,17 +294,17 @@
       </div>
     </div>
 
-    <div class="card" data-name="blue denim shirt">
-      <img src="https://m.media-amazon.com/images/I/81vHlgI1+dL._SX569_.jpg" alt="Blue Denim Shirt" />
+    <div class="card" data-name="blue denim shirt style 2">
+      <img src="https://www.jiomart.com/images/product/original/rvs2nflush/fashion-dream-girls-teal-blue-foil-printed-georgette-pack-of-1-dress-product-images-rvs2nflush-0-202302241139.jpg?im=Resize=(500,630)" alt="Blue Denim Shirt" />
       <div class="card-content">
         <h3>Blue Denim Shirt</h3>
         <span class="price">₹999</span>
         <a href="#" class="btn">View Product</a>
       </div>
-    </div> 
+    </div>
 
-    <div class="card" data-name="checked casual shirt">
-      <img src="https://m.media-amazon.com/images/I/61rI1yN4cSL._SY741_.jpg" alt="Checked Shirt" />
+    <div class="card" data-name="checked casual shirt style 2">
+      <img src="https://images.meesho.com/images/products/409390317/hgbdg_512.webp?width=512" alt="Checked Shirt" />
       <div class="card-content">
         <h3>Checked Casual Shirt</h3>
         <span class="price">₹750</span>
@@ -369,6 +312,86 @@
       </div>
     </div>
   </div>
+
+
+
+  <div class="container" id="shirtContainer">
+    <!-- Product Cards -->
+    <!-- First row -->
+    <div class="card" data-name="casual black shirt style 1">
+      <img src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2025/APRIL/11/5NNLLYxI_7a24b4de7e8740ed9abb442eb77d334c.jpg" alt="Black Shirt" />
+      <div class="card-content">
+        <h3>Casual Black Shirt</h3>
+        <span class="price">₹799</span>
+        <a href="#" class="btn">View Product</a>
+      </div>  
+    </div>
+
+    <div class="card" data-name="white slim fit shirt style 1">
+      <img src="https://babynmeindia.com/cdn/shop/files/DSC9347copy.jpg?v=1740925150&width=1946" alt="White Shirt" />
+      <div class="card-content">
+        <h3>White Slim Fit Shirt</h3>
+        <span class="price">₹899</span>
+        <a href="#" class="btn">View Product</a>
+      </div>
+    </div>
+
+    <div class="card" data-name="blue denim shirt style 1">
+      <img src="https://www.tibertaber.com/cdn/shop/products/8.1.jpg?v=1673245762" alt="Blue Denim Shirt" />
+      <div class="card-content">
+        <h3>Blue Denim Shirt</h3>
+        <span class="price">₹999</span>
+        <a href="#" class="btn">View Product</a>
+      </div>
+    </div>
+
+    <div class="card" data-name="checked casual shirt style 1">
+      <img src="https://i.pinimg.com/736x/c1/85/53/c185530254026f7c26f813aee92c4d93.jpg" alt="Checked Shirt" />
+      <div class="card-content">
+        <h3>Checked Casual Shirt</h3>
+        <span class="price">₹750</span>
+        <a href="#" class="btn">View Product</a>
+      </div>
+    </div>
+
+    <!-- Second row -->
+    <div class="card" data-name="casual black shirt style 2">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaq5hXdd6Igrbv0rZ1XyQELiN4PsU0lrZJkA&s" alt="Black Shirt" />
+      <div class="card-content">
+        <h3>Casual Black Shirt</h3>
+        <span class="price">₹799</span>
+        <a href="#" class="btn">View Product</a>
+      </div>
+    </div>
+
+    <div class="card" data-name="white slim fit shirt style 2">
+      <img src="https://www.fayonkids.com/cdn/shop/files/manufactured-by-fayon-kids-noida-u-p-white-waist-coat-with-pant-and-shirt-for-boys-40946021368064.jpg?v=1715939762&width=533" alt="White Shirt" />
+      <div class="card-content">
+        <h3>White Slim Fit Shirt</h3>
+        <span class="price">₹899</span>
+        <a href="#" class="btn">View Product</a>
+      </div>
+    </div>
+
+    <div class="card" data-name="blue denim shirt style 2">
+      <img src="https://www.jiomart.com/images/product/original/rvs2nflush/fashion-dream-girls-teal-blue-foil-printed-georgette-pack-of-1-dress-product-images-rvs2nflush-0-202302241139.jpg?im=Resize=(500,630)" alt="Blue Denim Shirt" />
+      <div class="card-content">
+        <h3>Blue Denim Shirt</h3>
+        <span class="price">₹999</span>
+        <a href="#" class="btn">View Product</a>
+      </div>
+    </div>
+
+    <div class="card" data-name="checked casual shirt style 2">
+      <img src="https://images.meesho.com/images/products/409390317/hgbdg_512.webp?width=512" alt="Checked Shirt" />
+      <div class="card-content">
+        <h3>Checked Casual Shirt</h3>
+        <span class="price">₹750</span>
+        <a href="#" class="btn">View Product</a>
+      </div>
+    </div>
+  </div>
+
 
 
 
@@ -381,7 +404,7 @@
       const searchValue = searchInput.value.toLowerCase();
       cards.forEach(card => {
         const name = card.getAttribute('data-name').toLowerCase();
-        card.style.display = name.includes(searchValue) ? 'block' : 'none';
+        card.style.display = name.includes(searchValue) ? '' : 'none';
       });
     });
   </script>

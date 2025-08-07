@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Product Management</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #f3f4f6, #dbeafe);
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .container {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      margin: auto; 
+      border-top: 5px solid #ff9900;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #232f3e;
+    }
+
+    .form-columns {
+      display: flex;
+      gap: 40px;
+    }
+
+    .form-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    .form-column + .form-column {
+      border-left: 2px solid #f3f3f3;
+      padding-left: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      margin: 10px 0 5px;
+      color: #374151;
+    }
+
+    input, select, textarea {
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      background-color: #f9fafb;
+      outline: none;
+    }
+
+    button {
+      background-color: #ff9900;
+      color: white;
+      padding: 12px;
+      width: 40%;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      margin: 20px auto 0;
+      display: block;
+    }
+
+    button:hover {
+      background-color: #e68a00;
+    }
+
+    .image-preview {
+      width: 100%;
+      height: 180px;
+      border: 1px dashed #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      background-color: #f9f9f9;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .image-preview img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .form-columns { flex-direction: column; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Admin Upload Form -->
+  <div class="container">
+    <h2>Product Upload Form</h2>
+    <form id="uploadForm">
+      <div class="form-columns">
+        <div class="form-column">
+          <label>Product Name:</label>
+          <input type="text" id="productName" required />
+          
+          <label>Category:</label>
+          <select id="category">
+            <option value="">Select Category</option>
+            <option value="Men">Men</option>
+            <option value="Women">Women</option>
+            <option value="Kids">Kids</option>
+          </select>
+
+          <label>Sub Category:</label>
+          <select id="subcategory">
+            <option value="">Select Subcategory</option>
+          </select>
+
+          <label>Size:</label>
+          <select id="size">
+            <option value="">Select Size</option>
+          </select>
+
+          <label>Price (INR):</label>
+          <input type="number" id="price" />
+          <label>Quantity:</label>
+          <input type="number" id="quantity" min="1" />
+        </div>
+        <div class="form-column">
+          <label>Discount (%):</label>
+          <input type="number" id="discount" />
+          <label>Offer Price (INR):</label>
+          <input type="number" id="offerPrice" readonly />
+          <label>Description:</label>
+          <textarea id="description" rows="4"></textarea>
+          <label>Product Image:</label>
+          <div class="image-preview" id="imagePreview">Image Preview</div>
+          <input type="file" id="imageUpload" accept="image/*" />
+        </div>
+      </div>
+      <button type="submit">Upload Product</button>
+    </form>
+  </div>
+
+  <script>
+    const price = document.getElementById("price");
+    const discount = document.getElementById("discount");
+    const offerPrice = document.getElementById("offerPrice");
+    const imageUpload = document.getElementById("imageUpload");
+    const imagePreview = document.getElementById("imagePreview");
+    const subcategory = document.getElementById("subcategory");
+    const size = document.getElementById("size");
+    const category = document.getElementById("category");
+
+    let uploadedImage = "";
+
+    function calculateOfferPrice() {
+      let p = parseFloat(price.value) || 0;
+      let d = parseFloat(discount.value) || 0;
+      let offer = p - (p * d / 100);
+      offerPrice.value = offer.toFixed(2);
+    }
+
+    price.addEventListener("input", calculateOfferPrice);
+    discount.addEventListener("input", calculateOfferPrice);
+
+    imageUpload.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          uploadedImage = e.target.result;
+          imagePreview.innerHTML = `<img src="${uploadedImage}" alt="Product">`;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // ✅ Dynamic Subcategory options based on Category
+    const subcategoryOptions = {
+      Men: ["T-shirts", "Shirts", "Jeans", "Accessories"],
+      Women: ["Ethnic Wear", "Western Wear", "Footwear", "Bags and Accessories"],
+      Kids: ["KT-shirts", "Kids Dresses", "Toys", "Kids Footwear",]
+    };
+
+    category.addEventListener("change", () => {
+      const selectedCategory = category.value;
+      subcategory.innerHTML = '<option value="">Select Subcategory</option>';
+
+      if (subcategoryOptions[selectedCategory]) {
+        subcategoryOptions[selectedCategory].forEach(optionText => {
+          const option = document.createElement("option");
+          option.value = optionText;
+          option.textContent = optionText;
+          subcategory.appendChild(option);
+        });
+      }
+    });
+
+    // ✅ Dynamic size options based on subcategory
+    subcategory.addEventListener("change", () => {
+      size.innerHTML = '<option value="">Select Size</option>';
+      const selected = subcategory.value;
+
+      let sizes = [];
+      if (selected === "Shirts" || selected === "Ethnic Wear" || selected === "Western Wear" || selected === "T-shirts") {
+        sizes = ["XS", "S", "M", "L", "XL", "XXL", "XXXL"];
+      } else if (selected === "Jeans") {
+        sizes = ["28", "32", "35","40", "42", "44"];
+      } else if (selected === "Kids Dresses" || selected === "KT-shirts" || selected === "Kids Footwear") {
+        sizes = ["0-3 Months", "3-6 Months", "6-9 Months", "9-12 Months","0-1 Years", "1-2 Years", "2-3 Years", "3-4 Years", "4-5 Years"];
+      } else if (selected === "Footwear") {
+        sizes = ["5", "6", "7", "8", "9", "10"];
+      } else if (selected === "Accessories" || selected === "Bags and Accessories") {
+        sizes = ["Free Size"];
+      }
+
+      sizes.forEach(s => {
+        let option = document.createElement("option");
+        option.value = s;
+        option.textContent = s;
+        size.appendChild(option);
+      });
+    });
+
+    // ✅ Save to localStorage
+    document.getElementById("uploadForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const product = {
+        name: document.getElementById("productName").value,
+        category: document.getElementById("category").value,
+        subcategory: document.getElementById("subcategory").value,
+        size: document.getElementById("size").value,
+        price: document.getElementById("price").value,
+        discount: document.getElementById("discount").value,
+        offerPrice: document.getElementById("offerPrice").value,
+        quantity: document.getElementById("quantity").value,
+        description: document.getElementById("description").value,
+        image: uploadedImage
+      };
+
+      let products = JSON.parse(localStorage.getItem("products")) || [];
+      products.push(product);
+      localStorage.setItem("products", JSON.stringify(products));
+
+      alert("Product saved successfully!");
+      this.reset();
+      imagePreview.textContent = "Image Preview";
+      uploadedImage = "";
+      offerPrice.value = "";
+      size.innerHTML = '<option value="">Select Size</option>';
+      subcategory.innerHTML = '<option value="">Select Subcategory</option>';
+    });
+  </script>
+</body>
+</html>

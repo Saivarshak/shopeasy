@@ -55,7 +55,7 @@
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-      margin: 0px;
+      margin:0;
     }
     .logincard:hover {
       transform: scale(1.05);
@@ -147,12 +147,23 @@
         padding: 30px;
       }
     }
+    .logo{
+      position: absolute;
+      top: 0px;
+      left: 70px;
+      bottom:20px;
+      height:220px;
+      width:220px;    
+    }
   </style>
 </head>
-<body>
+<body>  <div>
+       <img src="{% static 'images/logo1.png' %}" alt="Logo" class="logo"/>
+       </div>
   <div class="container">
+
     <div class="image-section">
-       <img src="{% static 'images/loginlogo.png' %}" alt="Logo" style="height: 200px; width: 200px;"/>
+
     </div>
     <div class="form-section">
       <h2>Welcome Back!</h2>

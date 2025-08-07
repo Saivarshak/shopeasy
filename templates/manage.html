@@ -135,50 +135,7 @@
   </style>
 </head>
 <body>
-  <div class="container" style="margin-bottom: 20px;">
-    <h3>Welcome, {{ admin_name }}</h3>
-    <p>Email: {{ admin_email }}</p>
-  </div>
-  <!---
-  <div class="container">
-    <h2>Product Upload Form</h2>
-    <form id="uploadForm">
-      <div class="form-columns">
-        <div class="form-column">
-          <label>Product Name:</label>
-          <input type="text" id="productName" required />
-          <label>Category:</label>
-          <select id="category">
-            <option value="">Select Category</option>
-           <option value="Electronics">Electronics</option> 
-            <option value="Clothing">Clothing</option>
-           <option value="Furniture">Furniture</option> 
-          </select>
-          <label>Sub Category:</label>
-          <select id="subcategory">
-            <option>--Select Main Category First--</option>
-          </select>
-          <label>Price (INR):</label>
-          <input type="number" id="price" />
-          <label>Quantity:</label>
-          <input type="number" id="quantity" min="1" />
-        </div>
-        <div class="form-column">
-          <label>Discount (%):</label>
-          <input type="number" id="discount" />
-          <label>Offer Price (INR):</label>
-          <input type="number" id="offerPrice" readonly />
-          <label>Description:</label>
-          <textarea id="description" rows="4"></textarea>
-          <label>Product Image:</label>
-          <div class="image-preview" id="imagePreview">Image Preview</div>
-          <input type="file" id="imageUpload" accept="image/*" />
-        </div>
-      </div>
-      <button type="submit">Upload Product</button>
-    </form>
-  </div> -->
-  <!-- Manage Products Table -->
+  <!--- Manage Products Table -->
   <div class="container">
     <h2>Manage Products</h2>
     <table>
@@ -191,7 +148,7 @@
           <th>Discount</th>
           <th>Quantity</th>
           <th>Actions</th>
-        </tr>
+        </tr> 
       </thead>
       <tbody id="productTable"></tbody>
     </table>
@@ -199,32 +156,47 @@
 
   <script>
     const category = document.getElementById("category");
-    const subcategory = document.getElementById("subcategory");
-    const price = document.getElementById("price");
-    const discount = document.getElementById("discount");
-    const offerPrice = document.getElementById("offerPrice");
-    const imageUpload = document.getElementById("imageUpload");
-    const imagePreview = document.getElementById("imagePreview");
-    const productTable = document.getElementById("productTable");
-    let uploadedImage = "";
+const maincategory = document.getElementById("maincategory");
+const subcategory = document.getElementById("subcategory");
+const price = document.getElementById("price");
+const discount = document.getElementById("discount");
+const offerPrice = document.getElementById("offerPrice");
+const imageUpload = document.getElementById("imageUpload");
+const imagePreview = document.getElementById("imagePreview");
 
-    const subCategories = {
-      Electronics: ["Mobile", "Laptop", "Tablet"],
-      Clothing: ["Men", "Women", "Kids"],
-      Furniture: ["Sofa", "Table", "Chair"]
-    };
+const mainCategories = {
+  Electronics: ["Mobile", "Laptop", "Tablet"],
+  Clothing: ["Men", "Women", "Kids"],
+  Furniture: ["Sofa", "Table", "Chair"]
+};
 
-    category.addEventListener("change", function () {
-      subcategory.innerHTML = "<option>Select Subcategory</option>";
-      if (subCategories[this.value]) {
-        subCategories[this.value].forEach(item => {
-          let option = document.createElement("option");
-          option.value = item;
-          option.textContent = item;
-          subcategory.appendChild(option);
-        });
-      }
+const subCategories = {
+  Clothing: ["T-Shirts", "Shirts", "Jeans", "Accessories"],
+};
+
+category.addEventListener("change", function () {
+  // Populate main category
+  maincategory.innerHTML = "<option>Select Maincategory</option>";
+  if (mainCategories[this.value]) {
+    mainCategories[this.value].forEach(item => {
+      let option = document.createElement("option");
+      option.value = item;
+      option.textContent = item;
+      maincategory.appendChild(option);
     });
+  }
+
+  // Populate subcategory
+  subcategory.innerHTML = "<option>--Select Subcategory--</option>";
+  if (subCategories[this.value]) {
+    subCategories[this.value].forEach(item => {
+      let option = document.createElement("option");
+      option.value = item;
+      option.textContent = item;
+      subcategory.appendChild(option);
+    });
+  }
+});
 
     function calculateOfferPrice() {
       let p = parseFloat(price.value) || 0;
@@ -319,6 +291,34 @@
     `;
   }
 
+document.getElementById("uploadForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const product = {
+    name: document.getElementById("productName").value,
+    category: document.getElementById("category").value,
+    subcategory: document.getElementById("subcategory").value,
+    maincategory: document.getElementById("maincategory").value,
+    price: document.getElementById("price").value,
+    discount: document.getElementById("discount").value,
+    offerPrice: document.getElementById("offerPrice").value,
+    quantity: document.getElementById("quantity").value,
+    description: document.getElementById("description").value,
+    image: uploadedImage
+  };
+
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  products.push(product);
+  localStorage.setItem("products", JSON.stringify(products));
+
+  alert("Product saved successfully!");
+  this.reset();
+  imagePreview.textContent = "Image Preview";
+  uploadedImage = "";
+  offerPrice.value = "";
+});
+
   </script>
 </body>
 </html>
+    <a href="upload.html">Go to Upload Products</a>
