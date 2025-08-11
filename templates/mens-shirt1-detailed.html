@@ -1,6 +1,5 @@
 {% load static%}
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,69 +10,143 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #fff;
+      background-color: #f8f8f8;
       color: #111;
     }
+
+    /* Header */
     header {
-      background-color: #232f3e;
+      background-color: #58606946;
       color: white;
-      padding: 15px;
+      padding: 10px 20px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
     }
-    .logo {
-      font-size: 20px;
-      font-weight: bold;
-      left:0px;
-      right:0px;
+
+    .logo img {
+      height: 100px;
+      width: auto;
+      margin-right: 20px;
+      display: block;
     }
-    .search-bar input {
-      width: 300px;
-      padding: 8px;
-    }
+
+    /* Main Layout */
     main {
       display: flex;
       padding: 20px;
+      gap: 20px;
     }
+
+    /* Product Images Grid */
     .product-images {
-      width: 30%;
+      width: 50%;
+      height: fit-content;      
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
     }
+
     .product-images img {
       width: 100%;
+      border-radius: 8px;
       border: 1px solid #ddd;
-      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+      background-color: white;
     }
+
+    .product-images img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Product Details */
     .product-details {
       width: 40%;
-      padding: 0 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
+
     .product-details h1 {
       font-size: 22px;
       margin-bottom: 10px;
     }
+
     .price {
       color: #B12704;
       font-size: 26px;
       font-weight: bold;
     }
+
     .old-price {
       text-decoration: line-through;
       color: #565959;
       margin-left: 10px;
     }
+
     .discount {
       color: #007600;
       font-weight: bold;
       margin-left: 10px;
     }
+
+    /* Sizes Section */
+    .sizes {
+      margin-top: 15px;
+    }
+
+    .sizes label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .size-options {
+      display: flex;
+      gap: 10px;
+    }
+
+    .size-btn {
+      padding: 8px 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .size-btn:hover {
+      background-color: #328bff1e;
+      border-color: #999;
+    }
+
+    .size-btn.disabled {
+      background-color: #e0e0e0;
+      color: #888;
+      cursor: not-allowed;
+    }
+
+    /* Selected size style */
+    .size-btn.selected {
+      background-color: #ffd900be; 
+      color: white;
+      border-color: #ffffffff;
+    }
+
+    /* Buy Section */
     .buy-section {
-      width: 30%;
+      width: 25%;
       padding: 20px;
       border: 1px solid #ddd;
-      border-radius: 5px;
+      border-radius: 8px;
       height: fit-content;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
+
     .buy-btn, .cart-btn {
       background-color: #FFD814;
       border: none;
@@ -83,37 +156,104 @@
       cursor: pointer;
       font-size: 16px;
       border-radius: 5px;
+      transition: background-color 0.3s ease;
     }
+
     .buy-btn {
       background-color: #FFA41C;
+    }
+
+    .buy-btn:hover {
+      background-color: hsla(33, 100%, 50%, 1.00);
+    }
+
+    .cart-btn:hover {
+      background-color: #f7ca00;
+    }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quantity-selector button {
+      padding: 5px 12px;
+      font-size: 18px;
+      border: none;
+      background: #232f3e;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .quantity-selector button:hover {
+      background: #1a242f;
+    }
+
+    .quantity-selector span {
+      font-size: 18px;
+      min-width: 20px;
+      text-align: center;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-    <div class="logo"></div>
-    <img src="{% static 'images/logo1.png' %}" alt="ShopEase Logo" style="height: 100px; width: 100px;">
-    <div class="search-bar">
-      <input type="text" placeholder="Search...">
+    <div class="logo">
+      <img src="{% static 'images/logo1.png' %}" alt="ShopEase Logo">
     </div>
   </header>
 
+  <!-- Main Content -->
   <main>
+    <!-- Product Images Grid -->
     <div class="product-images">
-      <img src="https://m.media-amazon.com/images/I/612YHoWBkIL._SX679_.jpg" alt="Shirt">
+      <img src="https://m.media-amazon.com/images/I/81OKA8E3EJL._SX679_.jpg" alt="Shirt Front">
+      <img src="https://m.media-amazon.com/images/I/81OKA8E3EJL.SX679.jpg" alt="Shirt Back">
+      <img src="https://m.media-amazon.com/images/I/81OKA8E3EJL.SX679.jpg" alt="Shirt Closeup">
+      <img src="https://m.media-amazon.com/images/I/81OKA8E3EJL.SX679.jpg" alt="Shirt Side View">
     </div>
 
+    <!-- Product Details -->
     <div class="product-details">
       <h1>Van Heusen Formal Printed Shirt for Men | Premium Cotton | Full Sleeves | Slim Fit | Breathable Fabric</h1>
-      <p>⭐⭐⭐⭐☆ (328 reviews)</p>
       <div>
         <span class="price">₹936</span>
         <span class="old-price">₹1,899</span>
         <span class="discount">-51%</span>
       </div>
       <p>Inclusive of all taxes</p>
+
+      <!-- Sizes Section -->
+      <div class="sizes">
+        <label>Available Sizes:</label>
+        <div class="size-options">
+          <button class="size-btn">S</button>
+          <button class="size-btn">M</button>
+          <button class="size-btn disabled">L</button>
+          <button class="size-btn">XL</button>
+        </div>
+      </div>
+
+      <!-- Quantity section -->
+      <div class="product-quantity">
+        <h3>Quantity:</h3>
+        <div class="quantity-selector">
+          <button id="decrease">-</button>
+          <span id="quantity">1</span>
+          <button id="increase">+</button>
+        </div>
+      </div>
+
+      <p>⭐⭐⭐⭐☆ (328 reviews)</p>
+      <p>Made from premium breathable cotton fabric, this slim-fit shirt ensures all-day comfort while giving a classy look for any occasion.</p>
     </div>
 
+    <!-- Buy Section -->
     <div class="buy-section">
       <p class="price">₹936</p>
       <p>FREE Delivery by Wednesday, 13 August</p>
@@ -122,7 +262,33 @@
     </div>
   </main>
 
+<script>
+  let quantity = 1;
 
-  
+  // Increase quantity
+  document.getElementById("increase").addEventListener("click", function() {
+    quantity++;
+    document.getElementById("quantity").innerText = quantity;
+  });
+
+  // Decrease quantity
+  document.getElementById("decrease").addEventListener("click", function() {
+    if (quantity > 1) {
+      quantity--;
+      document.getElementById("quantity").innerText = quantity;
+    }
+  });
+
+  // Size button selection
+  const sizeButtons = document.querySelectorAll(".size-btn:not(.disabled)");
+
+  sizeButtons.forEach(button => {
+    button.addEventListener("click", function() {
+      sizeButtons.forEach(btn => btn.classList.remove("selected")); // Remove previous
+      this.classList.add("selected"); // Highlight selected
+    });
+  });
+</script>  
+
 </body>
 </html>
