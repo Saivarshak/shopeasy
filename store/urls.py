@@ -33,5 +33,13 @@ urlpatterns = [
     path('kids_dresses/', views.kids_dresses, name='kids_dresses'),
     path('kids_toys/', views.kids_toys, name='kids_toys'),
     path('kids_footwear/', views.kids_footwear, name='kids_footwear'),
-    path('mens_shirt1_detailed/', views.mens_shirt1_detailed, name='mens_shirt1_detailed'),   
+    path('mens_shirt1_detailed/', views.mens_shirt1_detailed, name='mens_shirt1_detailed'),
+    path('mens_shirt2_detailed/', views.mens_shirt2_detailed, name='mens_shirt2_detailed'), 
+    path('mens_shirt3_detailed/', views.mens_shirt3_detailed, name='mens_shirt3_detailed'),
+    path('mens_shirt4_detailed/', views.mens_shirt4_detailed, name='mens_shirt4_detailed'), 
+    path('mens_shirt5_detailed/', views.mens_shirt5_detailed, name='mens_shirt5_detailed'), 
+    path('mens_shirt6_detailed/', views.mens_shirt6_detailed, name='mens_shirt6_detailed'),
+    path('mens_shirt7_detailed/', views.mens_shirt7_detailed, name='mens_shirt7_detailed'),
+    path('mens_shirt8_detailed/', views.mens_shirt8_detailed, name='mens_shirt8_detailed'),
 ]
+

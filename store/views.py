@@ -57,3 +57,25 @@ def kids_footwear(request):
 
 def mens_shirt1_detailed(request):
     return render(request, 'mens-shirt1-detailed.html')
+
+
+def mens_shirt2_detailed(request):
+    return render(request, 'mens-shirt2-detailed.html')
+
+def mens_shirt3_detailed(request):
+    return render(request, 'mens-shirt3-detailed.html')
+
+def mens_shirt4_detailed(request):
+    return render(request, 'mens-shirt4-detailed.html')
+
+def mens_shirt5_detailed(request):
+    return render(request, 'mens-shirt5-detailed.html')
+
+def mens_shirt6_detailed(request):
+    return render(request, 'mens-shirt6-detailed.html')
+
+def mens_shirt7_detailed(request):
+    return render(request, 'mens-shirt7-detailed.html')
+
+def mens_shirt8_detailed(request):
+    return render(request, 'mens-shirt8-detailed.html')
