@@ -41,5 +41,22 @@ urlpatterns = [
     path('mens_shirt6_detailed/', views.mens_shirt6_detailed, name='mens_shirt6_detailed'),
     path('mens_shirt7_detailed/', views.mens_shirt7_detailed, name='mens_shirt7_detailed'),
     path('mens_shirt8_detailed/', views.mens_shirt8_detailed, name='mens_shirt8_detailed'),
+    path('mens_tshirt1_detailed/', views.mens_tshirt1_detailed, name='mens_tshirt1_detailed'),
+    path('mens_tshirt2_detailed/', views.mens_tshirt2_detailed, name='mens_tshirt2_detailed'),
+    path('mens_tshirt3_detailed/', views.mens_tshirt3_detailed, name='mens_tshirt3_detailed'),
+    path('mens_tshirt4_detailed/', views.mens_tshirt4_detailed, name='mens_tshirt4_detailed'),
+    path('mens_tshirt5_detailed/', views.mens_tshirt5_detailed, name='mens_tshirt5_detailed'),
+    path('mens_tshirt6_detailed/', views.mens_tshirt6_detailed, name='mens_tshirt6_detailed'),
+    path('mens_tshirt7_detailed/', views.mens_tshirt7_detailed, name='mens_tshirt7_detailed'),
+    path('mens_tshirt8_detailed/', views.mens_tshirt8_detailed, name='mens_tshirt8_detailed'),
+    path('mens_jeans1_detailed/', views.mens_jeans1_detailed, name='mens_jeans1_detailed'),
+    path('mens_jeans2_detailed/', views.mens_jeans2_detailed, name='mens_jeans2_detailed'),
+    path('mens_jeans3_detailed/', views.mens_jeans3_detailed, name='mens_jeans3_detailed'),
+    path('mens_jeans4_detailed/', views.mens_jeans4_detailed, name='mens_jeans4_detailed'),
+    path('mens_jeans5_detailed/', views.mens_jeans5_detailed, name='mens_jeans5_detailed'),
+    path('mens_jeans6_detailed/', views.mens_jeans6_detailed, name='mens_jeans6_detailed'),
+    path('mens_jeans7_detailed/', views.mens_jeans7_detailed, name='mens_jeans7_detailed'),
+    path('mens_jeans8_detailed/', views.mens_jeans8_detailed, name='mens_jeans8_detailed'),
+    
 ]
 

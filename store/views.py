@@ -79,3 +79,51 @@ def mens_shirt7_detailed(request):
 
 def mens_shirt8_detailed(request):
     return render(request, 'mens-shirt8-detailed.html')
+
+def mens_tshirt1_detailed(request):
+    return render(request, 'mens-tshirt1-detailed.html')
+
+def mens_tshirt2_detailed(request):
+    return render(request, 'mens-tshirt2-detailed.html')
+
+def mens_tshirt3_detailed(request):
+    return render(request, 'mens-tshirt3-detailed.html')
+
+def mens_tshirt4_detailed(request):
+    return render(request, 'mens-tshirt4-detailed.html')
+
+def mens_tshirt5_detailed(request):
+    return render(request, 'mens-tshirt5-detailed.html')
+
+def mens_tshirt6_detailed(request):
+    return render(request, 'mens-tshirt6-detailed.html')
+
+def mens_tshirt7_detailed(request):
+    return render(request, 'mens-tshirt7-detailed.html')
+
+def mens_tshirt8_detailed(request):
+    return render(request, 'mens-tshirt8-detailed.html')
+
+def mens_jeans1_detailed(request):
+    return render(request, 'mens-jeans1-detailed.html')
+
+def mens_jeans2_detailed(request):
+    return render(request, 'mens-jeans2-detailed.html')
+
+def mens_jeans3_detailed(request):
+    return render(request, 'mens-jeans3-detailed.html')
+
+def mens_jeans4_detailed(request):
+    return render(request, 'mens-jeans4-detailed.html')
+
+def mens_jeans5_detailed(request):
+    return render(request, 'mens-jeans5-detailed.html')
+
+def mens_jeans6_detailed(request):
+    return render(request, 'mens-jeans6-detailed.html')
+
+def mens_jeans7_detailed(request):
+    return render(request, 'mens-jeans7-detailed.html')
+
+def mens_jeans8_detailed(request):
+    return render(request, 'mens-jeans8-detailed.html')
