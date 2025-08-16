@@ -122,8 +122,3 @@ def mens_jeans5_detailed(request):
 def mens_jeans6_detailed(request):
     return render(request, 'mens-jeans6-detailed.html')
 
-def mens_jeans7_detailed(request):
-    return render(request, 'mens-jeans7-detailed.html')
-
-def mens_jeans8_detailed(request):
-    return render(request, 'mens-jeans8-detailed.html')

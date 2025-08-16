@@ -54,9 +54,7 @@ urlpatterns = [
     path('mens_jeans3_detailed/', views.mens_jeans3_detailed, name='mens_jeans3_detailed'),
     path('mens_jeans4_detailed/', views.mens_jeans4_detailed, name='mens_jeans4_detailed'),
     path('mens_jeans5_detailed/', views.mens_jeans5_detailed, name='mens_jeans5_detailed'),
-    path('mens_jeans6_detailed/', views.mens_jeans6_detailed, name='mens_jeans6_detailed'),
-    path('mens_jeans7_detailed/', views.mens_jeans7_detailed, name='mens_jeans7_detailed'),
-    path('mens_jeans8_detailed/', views.mens_jeans8_detailed, name='mens_jeans8_detailed'),
+    path('mens_jeans6_detailed/', views.mens_jeans6_detailed, name='mens_jeans6_detailed')    
     
 ]
 
