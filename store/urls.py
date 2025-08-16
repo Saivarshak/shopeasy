@@ -54,7 +54,18 @@ urlpatterns = [
     path('mens_jeans3_detailed/', views.mens_jeans3_detailed, name='mens_jeans3_detailed'),
     path('mens_jeans4_detailed/', views.mens_jeans4_detailed, name='mens_jeans4_detailed'),
     path('mens_jeans5_detailed/', views.mens_jeans5_detailed, name='mens_jeans5_detailed'),
-    path('mens_jeans6_detailed/', views.mens_jeans6_detailed, name='mens_jeans6_detailed')    
-    
+    path('mens_jeans6_detailed/', views.mens_jeans6_detailed, name='mens_jeans6_detailed'),
+    path('womens_ethnicware1_detailed/', views.womens_ethnicware1_detailed, name='womens_ethnicware1_detailed'),
+    path('womens_ethnicware2_detailed/', views.womens_ethnicware2_detailed, name='womens_ethnicware2_detailed'),
+    path('womens_ethnicware3_detailed/', views.womens_ethnicware3_detailed, name='womens_ethnicware3_detailed'),
+    path('womens_ethnicware4_detailed/', views.womens_ethnicware4_detailed, name='womens_ethnicware4_detailed'),
+    path('womens_ethnicware5_detailed/', views.womens_ethnicware5_detailed, name='womens_ethnicware5_detailed'),
+    path('womens_ethnicware6_detailed/', views.womens_ethnicware6_detailed, name='womens_ethnicware6_detailed'),
+    path('womens_ethnicware7_detailed/', views.womens_ethnicware7_detailed, name='womens_ethnicware7_detailed'),
+    path('womens_ethnicware8_detailed/', views.womens_ethnicware8_detailed, name='womens_ethnicware8_detailed'),
+    # path('womens_westernware1_detailed/', views.womens_westernware1_detailed, name='womens_westernware1_detailed'),
+    # path('womens_westernware2_detailed/', views.womens_westernware2_detailed, name='womens_westernware2_detailed'),
+    # path('womens_westernware3_detailed/', views.womens_westernware3_detailed, name='womens_westernware3_detailed'),
+     
 ]
 

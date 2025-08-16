@@ -122,3 +122,26 @@ def mens_jeans5_detailed(request):
 def mens_jeans6_detailed(request):
     return render(request, 'mens-jeans6-detailed.html')
 
+def womens_ethnicware1_detailed(request):
+    return render(request, 'womens-ethnicware1-detailed.html')
+
+def womens_ethnicware2_detailed(request):
+    return render(request, 'womens-ethnicware2-detailed.html')
+
+def womens_ethnicware3_detailed(request):
+    return render(request, 'womens-ethnicware3-detailed.html')
+
+def womens_ethnicware4_detailed(request):
+    return render(request, 'womens-ethnicware4-detailed.html')
+
+def womens_ethnicware5_detailed(request):
+    return render(request, 'womens-ethnicware5-detailed.html')
+
+def womens_ethnicware6_detailed(request):
+    return render(request, 'womens-ethnicware6-detailed.html')
+
+def womens_ethnicware7_detailed(request):
+    return render(request, 'womens-ethnicware7-detailed.html')
+
+def womens_ethnicware8_detailed(request):
+    return render(request, 'womens-ethnicware8-detailed.html')
