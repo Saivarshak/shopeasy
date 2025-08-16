@@ -63,9 +63,22 @@ urlpatterns = [
     path('womens_ethnicware6_detailed/', views.womens_ethnicware6_detailed, name='womens_ethnicware6_detailed'),
     path('womens_ethnicware7_detailed/', views.womens_ethnicware7_detailed, name='womens_ethnicware7_detailed'),
     path('womens_ethnicware8_detailed/', views.womens_ethnicware8_detailed, name='womens_ethnicware8_detailed'),
-    # path('womens_westernware1_detailed/', views.womens_westernware1_detailed, name='womens_westernware1_detailed'),
-    # path('womens_westernware2_detailed/', views.womens_westernware2_detailed, name='womens_westernware2_detailed'),
-    # path('womens_westernware3_detailed/', views.womens_westernware3_detailed, name='womens_westernware3_detailed'),
-     
+    path('womens_westernware1_detailed/', views.womens_westernware1_detailed, name='womens_westernware1_detailed'),
+    path('womens_westernware2_detailed/', views.womens_westernware2_detailed, name='womens_westernware2_detailed'),
+    path('womens_westernware3_detailed/', views.womens_westernware3_detailed, name='womens_westernware3_detailed'),
+    path('womens_westernware4_detailed/', views.womens_westernware4_detailed, name='womens_westernware4_detailed'),
+    path('womens_westernware5_detailed/', views.womens_westernware5_detailed, name='womens_westernware5_detailed'),
+    path('womens_westernware6_detailed/', views.womens_westernware6_detailed, name='womens_westernware6_detailed'),
+    path('womens_westernware7_detailed/', views.womens_westernware7_detailed, name='womens_westernware7_detailed'),
+    path('womens_westernware8_detailed/', views.womens_westernware8_detailed, name='womens_westernware8_detailed'),
+    path('womens_footwear1_detailed/', views.womens_footwear1_detailed, name='womens_footwear1_detailed'),
+    path('womens_footwear2_detailed/', views.womens_footwear2_detailed, name='womens_footwear2_detailed'),
+    path('womens_footwear3_detailed/', views.womens_footwear3_detailed, name='womens_footwear3_detailed'),
+    path('womens_footwear4_detailed/', views.womens_footwear4_detailed, name='womens_footwear4_detailed'),
+    path('womens_footwear5_detailed/', views.womens_footwear5_detailed, name='womens_footwear5_detailed'),
+    path('womens_footwear6_detailed/', views.womens_footwear6_detailed, name='womens_footwear6_detailed'),
+    path('womens_footwear7_detailed/', views.womens_footwear7_detailed, name='womens_footwear7_detailed'),
+    path('womens_footwear8_detailed/', views.womens_footwear8_detailed, name='womens_footwear8_detailed'),
+      
 ]
 

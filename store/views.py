@@ -145,3 +145,51 @@ def womens_ethnicware7_detailed(request):
 
 def womens_ethnicware8_detailed(request):
     return render(request, 'womens-ethnicware8-detailed.html')
+
+def womens_westernware1_detailed(request):
+    return render(request, 'womens-westernware1-detailed.html')
+
+def womens_westernware2_detailed(request):
+    return render(request, 'womens-westernware2-detailed.html')
+
+def womens_westernware3_detailed(request):
+    return render(request, 'womens-westernware3-detailed.html')
+
+def womens_westernware4_detailed(request):
+    return render(request, 'womens-westernware4-detailed.html')
+
+def womens_westernware5_detailed(request):
+    return render(request, 'womens-westernware5-detailed.html')
+
+def womens_westernware6_detailed(request):
+    return render(request, 'womens-westernware6-detailed.html')
+
+def womens_westernware7_detailed(request):
+    return render(request, 'womens-westernware7-detailed.html')
+
+def womens_westernware8_detailed(request):
+    return render(request, 'womens-westernware8-detailed.html')
+
+def womens_footwear1_detailed(request):
+    return render(request, 'womens-footwear1-detailed.html')
+
+def womens_footwear2_detailed(request):
+    return render(request, 'womens-footwear2-detailed.html')
+
+def womens_footwear3_detailed(request):
+    return render(request, 'womens-footwear3-detailed.html')
+
+def womens_footwear4_detailed(request):
+    return render(request, 'womens-footwear4-detailed.html')
+
+def womens_footwear5_detailed(request):
+    return render(request, 'womens-footwear5-detailed.html')
+
+def womens_footwear6_detailed(request):
+    return render(request, 'womens-footwear6-detailed.html')
+
+def womens_footwear7_detailed(request):
+    return render(request, 'womens-footwear7-detailed.html')
+
+def womens_footwear8_detailed(request):
+    return render(request, 'womens-footwear8-detailed.html')

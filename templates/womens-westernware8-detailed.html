@@ -1,0 +1,418 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Van Heusen Formal Printed Shirt</title>
+  <style>
+    body {  
+      font-family: Arial, sans-serif;
+      margin: 0;
+      color: #111;
+      background: #ffffffff;
+    }
+
+    /* Header */
+    header {
+      background-color: hsla(69, 71%, 41%, 0.22);
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img {
+      height: 100px;
+      width: auto;
+      margin-right: 20px;
+      display: block;
+    }
+
+    /* Main Layout */
+    main {
+      display: flex;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    /* Product Images Grid */
+    .product-images {
+      width: 50%;
+      height: fit-content;      
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .product-images img {
+      width: 1000px;
+      height: 500px;
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid #00000013;
+      transition: transform 0.3s ease;
+      background-color: white;
+      cursor: pointer;
+      object-fit: cover;
+}
+
+    .product-images img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Product Details */
+    .product-details {
+      width: 40%;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .product-details h1 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: #B12704;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #565959;
+      margin-left: 10px;
+    }
+
+    .discount {
+      color: #007600;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    /* Sizes Section */
+    .sizes {
+      margin-top: 15px;
+    }
+
+    .sizes label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .size-options {
+      display: flex;
+      gap: 10px;
+    }
+
+    .size-btn {
+      padding: 8px 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .size-btn:hover {
+      background-color: #328bff1e;
+      border-color: #999;
+    }
+
+    .size-btn.disabled {
+      background-color: #e0e0e0;
+      color: #888;
+      cursor: not-allowed;
+    }
+
+    /* Selected size style */
+    .size-btn.selected {
+      background-color: #ffd900be; 
+      color: white;
+      border-color: #ffffffff;
+    }
+
+    /* Buy Section */
+    .buy-section {
+      width: 25%;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      height: fit-content;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .buy-btn, .cart-btn {
+      background-color: #FFD814;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      margin: 10px 0;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .buy-btn {
+      background-color: #FFA41C;
+    }
+
+    .buy-btn:hover {
+      background-color: hsla(33, 100%, 50%, 1.00);
+    }
+
+    .cart-btn:hover {
+      background-color: #f7ca00;
+    }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quantity-selector button {
+      padding: 5px 12px;
+      font-size: 18px;
+      border: none;
+      background: #232f3e;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .quantity-selector button:hover {
+      background: #1a242f;
+    }
+
+    .quantity-selector span {
+      font-size: 18px;
+      min-width: 20px;
+      text-align: center;
+      display: inline-block;
+    }
+
+    /* Image Modal Overlay */
+    .image-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .image-modal img {
+      max-width: 90%;
+      max-height: 90%;
+      transition: transform 0.3s ease;
+    }
+
+    /* Arrows */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      font-size: 40px;
+      color: white;
+      background: rgba(0,0,0,0.5);
+      padding: 10px;
+      cursor: pointer;
+      user-select: none;
+      border-radius: 5px;
+    }
+    .arrow:hover {
+      background: rgba(0,0,0,0.8);
+    }
+    .arrow-left {
+      left: 20px;
+    }
+    .arrow-right {
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="{% static 'images/logo1.png' %}" alt="ShopEase Logo">
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Product Images Grid -->
+    <div class="product-images">
+      <img src="https://m.media-amazon.com/images/I/61ypFGeSu5L._SX679_.jpg" alt="Shirt Front">
+      <img src="https://m.media-amazon.com/images/I/61mt9dPpEpL._SX679_.jpg" alt="Shirt Back">
+      <img src="https://m.media-amazon.com/images/I/71rKeaZhtaL._SX679_.jpg" alt="Shirt Closeup">
+      <img src="https://m.media-amazon.com/images/I/51vSmbiJFnL._SX679_.jpg" alt="Shirt Side View">
+    </div>
+
+    <!-- Product Details -->
+    <div class="product-details">
+      <h1>Van Heusen Formal Printed Shirt for Men | Premium Cotton | Full Sleeves | Slim Fit | Breathable Fabric</h1>
+      <div>
+        <span class="price">₹936</span>
+        <span class="old-price">₹1,899</span>
+        <span class="discount">-51%</span>
+      </div>
+      <p>Inclusive of all taxes</p>
+
+      <!-- Sizes Section -->
+      <div class="sizes">
+        <label>Available Sizes:</label>
+        <div class="size-options">
+          <button class="size-btn">S</button>
+          <button class="size-btn">M</button>
+          <button class="size-btn ">L</button>
+          <button class="size-btn disabled">XL</button>
+        </div>
+      </div>
+
+      <!-- Quantity section -->
+      <div class="product-quantity">
+        <h3>Quantity:</h3>
+        <div class="quantity-selector">
+          <button id="decrease">-</button>
+          <span id="quantity">1</span>
+          <button id="increase">+</button>
+        </div>
+      </div>
+
+      <p>⭐⭐⭐⭐☆ (328 reviews)</p>
+      <p>Made from premium breathable cotton fabric, this slim-fit shirt ensures all-day comfort while giving a classy look for any occasion.</p>
+    </div>
+
+    <!-- Buy Section -->
+    <div class="buy-section">
+      <p class="price">₹936</p>
+      <p>FREE Delivery by Wednesday, 13 August</p>
+      <button class="cart-btn">Add to Cart</button>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+  </main>
+
+  <!-- Modal HTML -->
+  <div class="image-modal" id="imageModal">
+    <span class="arrow arrow-left" id="prev">&#10094;</span>
+    <img id="modalImage" src="" alt="Zoomed Product Image">
+    <span class="arrow arrow-right" id="next">&#10095;</span>
+  </div>
+
+<script>
+  let quantity = 1;
+  const increaseBtn = document.getElementById("increase");
+  const decreaseBtn = document.getElementById("decrease");
+  const quantityDisplay = document.getElementById("quantity");
+
+  increaseBtn.addEventListener("click", () => {
+    quantity++;
+    quantityDisplay.innerText = quantity;
+  });
+
+  decreaseBtn.addEventListener("click", () => {
+    if (quantity > 1) {
+      quantity--;
+      quantityDisplay.innerText = quantity;
+    }
+  });
+
+  // Size button selection
+  const sizeButtons = document.querySelectorAll(".size-btn:not(.disabled)");
+  sizeButtons.forEach(button => {
+    button.addEventListener("click", function() {
+      sizeButtons.forEach(btn => btn.classList.remove("selected"));
+      this.classList.add("selected");
+    });
+  });
+
+  // Image modal with arrows
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImage");
+  const productImages = document.querySelectorAll(".product-images img");
+  const prevBtn = document.getElementById("prev");
+  const nextBtn = document.getElementById("next");
+
+  let currentIndex = 0;
+  let scale = 1;
+
+  productImages.forEach((img, index) => {
+    img.addEventListener("click", function() {
+      currentIndex = index;
+      openModal();
+    });
+  });
+
+  function openModal() {
+    modal.style.display = "flex";
+    modalImg.src = productImages[currentIndex].src;
+    scale = 1;
+    modalImg.style.transform = `scale(${scale})`;
+  }
+
+  function closeModal() {
+    modal.style.display = "none";
+  }
+
+  prevBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex - 1 + productImages.length) % productImages.length;
+    openModal();
+  });
+
+  nextBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex + 1) % productImages.length;
+    openModal();
+  });
+
+  modal.addEventListener("click", function(e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  modalImg.addEventListener("wheel", function(e) {
+    e.preventDefault();
+    if (e.deltaY < 0) {
+      scale += 0.1;
+    } else {
+      scale = Math.max(1, scale - 0.1);
+    }
+    modalImg.style.transform = `scale(${scale})`;
+  });
+
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+      closeModal();
+    } else if (e.key === "ArrowRight") {
+      currentIndex = (currentIndex + 1) % productImages.length;
+      openModal();
+    } else if (e.key === "ArrowLeft") {
+      currentIndex = (currentIndex - 1 + productImages.length) % productImages.length;
+      openModal();
+    }
+  });
+</script>  
+
+</body>
+</html>
+
+
