@@ -193,3 +193,105 @@ def womens_footwear7_detailed(request):
 
 def womens_footwear8_detailed(request):
     return render(request, 'womens-footwear8-detailed.html')
+
+def kids_tshirt1_detailed(request):
+    return render(request, 'kids-tshirts1-detailed.html')
+
+def kids_tshirt2_detailed(request):
+    return render(request, 'kids-tshirts2-detailed.html')
+
+def kids_tshirt3_detailed(request):
+    return render(request, 'kids-tshirts3-detailed.html')
+
+def kids_tshirt4_detailed(request):
+    return render(request, 'kids-tshirts4-detailed.html')
+
+def kids_tshirt5_detailed(request):
+    return render(request, 'kids-tshirts5-detailed.html')
+
+def kids_tshirt6_detailed(request):
+    return render(request, 'kids-tshirts6-detailed.html')
+
+def kids_tshirt7_detailed(request):
+    return render(request, 'kids-tshirts7-detailed.html')
+
+def kids_tshirt8_detailed(request):
+    return render(request, 'kids-tshirts8-detailed.html')
+
+
+def kids_dress1_detailed(request):
+    return render(request, 'kids-dress1-detailed.html')
+
+def kids_dress2_detailed(request):
+    return render(request, 'kids-dress2-detailed.html')
+
+
+def kids_dress3_detailed(request):
+    return render(request, 'kids-dress3-detailed.html')
+
+def kids_dress4_detailed(request):
+    return render(request, 'kids-dress4-detailed.html')
+
+def kids_dress5_detailed(request):
+    return render(request, 'kids-dress5-detailed.html')
+
+def kids_dress6_detailed(request):
+    return render(request, 'kids-dress6-detailed.html')
+
+def kids_dress7_detailed(request):
+    return render(request, 'kids-dress7-detailed.html')
+
+def kids_dress8_detailed(request):
+    return render(request, 'kids-dress8-detailed.html')
+
+
+
+def kids_toys1_detailed(request):
+    return render(request, 'kids-toys1-detailed.html')
+
+def kids_toys2_detailed(request):
+    return render(request, 'kids-toys2-detailed.html')
+
+def kids_toys3_detailed(request):
+    return render(request, 'kids-toys3-detailed.html')
+
+def kids_toys4_detailed(request):
+    return render(request, 'kids-toys4-detailed.html')
+
+def kids_toys5_detailed(request):
+    return render(request, 'kids-toys5-detailed.html')
+
+def kids_toys6_detailed(request):
+    return render(request, 'kids-toys6-detailed.html')
+
+def kids_toys7_detailed(request):
+    return render(request, 'kids-toys7-detailed.html')
+
+def kids_toys8_detailed(request):
+    return render(request, 'kids-toys8-detailed.html')
+
+
+def kids_footware1_detailed(request):
+    return render(request, 'kids-footware1-detailed.html')
+
+def kids_footware2_detailed(request):
+    return render(request, 'kids-footware2-detailed.html')
+
+def kids_footware3_detailed(request):
+    return render(request, 'kids-footware3-detailed.html')
+
+def kids_footware4_detailed(request):
+    return render(request, 'kids-footware4-detailed.html')
+
+def kids_footware5_detailed(request):
+    return render(request, 'kids-footware5-detailed.html')
+
+
+def kids_footware6_detailed(request):
+    return render(request, 'kids-footware6-detailed.html')
+
+def kids_footware7_detailed(request):
+    return render(request, 'kids-footware7-detailed.html')
+
+def kids_footware8_detailed(request):
+    return render(request, 'kids-footware8-detailed.html')
