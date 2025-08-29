@@ -48,8 +48,9 @@
 
     label {
       font-weight: bold;
-      margin: 10px 0 5px;
+      margin: 5px 5px 5px 5px;
       color: #374151;
+      
     }
 
     input, select, textarea {
@@ -131,11 +132,11 @@
           <select id="size">
             <option value="">Select Size</option>
           </select>
-
+          
+          <!-- ✅ Only one size quantity box appears here -->
+          <div id="quantityContainer"></div>
           <label>Price (INR):</label>
-          <input type="number" id="price" />
-          <label>Quantity:</label>
-          <input type="number" id="quantity" min="1" />
+      <input type="number" id="price" />
         </div>
         <div class="form-column">
           <label>Discount (%):</label>
@@ -149,6 +150,7 @@
           <input type="file" id="imageUpload" accept="image/*" />
         </div>
       </div>
+      
       <button type="submit">Upload Product</button>
     </form>
   </div>
@@ -162,8 +164,10 @@
     const subcategory = document.getElementById("subcategory");
     const size = document.getElementById("size");
     const category = document.getElementById("category");
+    const quantityContainer = document.getElementById("quantityContainer");
 
     let uploadedImage = "";
+    let sizeQuantities = {}; // store quantities for all sizes
 
     function calculateOfferPrice() {
       let p = parseFloat(price.value) || 0;
@@ -208,7 +212,7 @@
       }
     });
 
-    // ✅ Dynamic size options based on subcategory
+    // ✅ Dynamic size options
     subcategory.addEventListener("change", () => {
       size.innerHTML = '<option value="">Select Size</option>';
       const selected = subcategory.value;
@@ -222,7 +226,7 @@
         sizes = ["0-3 Months", "3-6 Months", "6-9 Months", "9-12 Months","0-1 Years", "1-2 Years", "2-3 Years", "3-4 Years", "4-5 Years"];
       } else if (selected === "Footwear") {
         sizes = ["5", "6", "7", "8", "9", "10"];
-      } else if (selected === "Accessories" || selected === "Bags and Accessories") {
+      } else if (selected === "Accessories" || selected === "Bags and Accessories" || selected === "Toys") {
         sizes = ["Free Size"];
       }
 
@@ -232,6 +236,39 @@
         option.textContent = s;
         size.appendChild(option);
       });
+
+      // clear quantity container on subcategory change
+      quantityContainer.innerHTML = "";
+    });
+
+    // ✅ Show only selected size quantity box
+    size.addEventListener("change", () => {
+      const selectedSize = size.value;
+      quantityContainer.innerHTML = "";
+
+      if (selectedSize) {
+        const wrapper = document.createElement("div");
+        wrapper.style.marginBottom = "8px";
+
+        const label = document.createElement("label");
+        label.textContent = `${selectedSize} Quantity:`;
+        label.style.display = "block";
+
+        const input = document.createElement("input");
+        input.type = "number";
+        input.min = "0";
+        input.value = sizeQuantities[selectedSize] || 0; // keep previous if exists
+        input.dataset.size = selectedSize;
+
+        // save value when typing
+        input.addEventListener("input", () => {
+          sizeQuantities[selectedSize] = parseInt(input.value) || 0;
+        });
+
+        wrapper.appendChild(label);
+        wrapper.appendChild(input);
+        quantityContainer.appendChild(wrapper);
+      }
     });
 
     // ✅ Save to localStorage
@@ -246,22 +283,24 @@
         price: document.getElementById("price").value,
         discount: document.getElementById("discount").value,
         offerPrice: document.getElementById("offerPrice").value,
-        quantity: document.getElementById("quantity").value,
         description: document.getElementById("description").value,
-        image: uploadedImage
+        image: uploadedImage,
+        quantities: sizeQuantities // ✅ store all size quantities
       };
 
       let products = JSON.parse(localStorage.getItem("products")) || [];
       products.push(product);
       localStorage.setItem("products", JSON.stringify(products));
 
-      alert("Product saved successfully!");
+      alert("Product Uploaded successfully!");
       this.reset();
       imagePreview.textContent = "Image Preview";
       uploadedImage = "";
       offerPrice.value = "";
       size.innerHTML = '<option value="">Select Size</option>';
       subcategory.innerHTML = '<option value="">Select Subcategory</option>';
+      quantityContainer.innerHTML = "";
+      sizeQuantities = {};
     });
   </script>
 </body>
