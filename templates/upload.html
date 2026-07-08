@@ -193,8 +193,8 @@
 
     // ✅ Dynamic Subcategory options based on Category
     const subcategoryOptions = {
-      Men: ["T-shirts", "Shirts", "Jeans"],
-      Women: ["Ethnic Wear", "Western Wear", "Footwear"],
+      Men: ["T-shirts", "Shirts", "Jeans", "Accessories"],
+      Women: ["Ethnic Wear", "Western Wear", "Footwear", "Bags and Accessories"],
       Kids: ["KT-shirts", "Kids Dresses", "Toys", "Kids Footwear",]
     };
 
@@ -226,7 +226,7 @@
         sizes = ["0-3 Months", "3-6 Months", "6-9 Months", "9-12 Months","0-1 Years", "1-2 Years", "2-3 Years", "3-4 Years", "4-5 Years"];
       } else if (selected === "Footwear") {
         sizes = ["5", "6", "7", "8", "9", "10"];
-      } else if (selected === "Toys") {
+      } else if (selected === "Accessories" || selected === "Bags and Accessories" || selected === "Toys") {
         sizes = ["Free Size"];
       }
 

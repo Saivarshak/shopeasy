@@ -295,7 +295,3 @@ def kids_footware7_detailed(request):
 
 def kids_footware8_detailed(request):
     return render(request, 'kids-footware8-detailed.html')
-
-
-def under_maintenance(request):
-    return render(request, 'under-maintenance.html')
