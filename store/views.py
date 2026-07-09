@@ -1,31 +1,72 @@
-from django.shortcuts import render
-from .models import Product
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+from .models import Product, Category
 
 def home(request):
     products = Product.objects.all()
-    return render(request, 'home.html', {'products': products})
+    categories = Category.objects.all()
+    return render(request, 'home.html', {'products': products, 'categories': categories})
 
 def category_men(request):
+    category = Category.objects.filter(slug='men').first()
+    if category and category.under_maintenance:
+        return render(request, 'under_maintenance.html', {'category': category})
     return render(request, 'category-men.html')
 
 def category_women(request):
+    category = Category.objects.filter(slug='women').first()
+    if category and category.under_maintenance:
+        return render(request, 'under_maintenance.html', {'category': category})
     return render(request, 'category-women.html')
 
 def category_kids(request):
+    category = Category.objects.filter(slug='kids').first()
+    if category and category.under_maintenance:
+        return render(request, 'under_maintenance.html', {'category': category})
     return render(request, 'category-kids.html')
 
+def under_maintenance(request):
+    return render(request, 'under_maintenance.html')
 
 def login(request):
-    return render(request, 'login.html')    
+    return render(request, 'login.html')
+
+def category_management(request):
+    categories = Category.objects.all()
+    return render(request, 'category_management.html', {'categories': categories})
+
+def category_toggle(request):
+    if request.method == 'POST':
+        category_id = request.POST.get('category_id')
+        toggle_type = request.POST.get('toggle_type')
+        category = get_object_or_404(Category, id=category_id)
+        
+        if toggle_type == 'active':
+            is_active = request.POST.get('is_active') == 'on'
+            category.is_active = is_active
+            # If disabling active, ensure under_maintenance is consistent
+            if not is_active:
+                # Keep under_maintenance as is - user controls it independently
+                pass
+            category.save()
+        elif toggle_type == 'maintenance':
+            under_maintenance = request.POST.get('under_maintenance') == 'on'
+            category.under_maintenance = under_maintenance
+            # If enabling maintenance, set active to OFF
+            if under_maintenance:
+                category.is_active = False
+            category.save()
+        
+        messages.success(request, f'Category "{category.name}" updated successfully.')
+    
+    return redirect('/category-management/')
 
 
 def mens_tshirts(request):
     return render(request, 'mens-tshirts.html') 
 
-
 def mens_shirts(request):
     return render(request, 'mens-shirts.html')
-
 
 def mens_jeans(request):
     return render(request, 'mens-jeans.html')
@@ -39,11 +80,8 @@ def womens_westernware(request):
 def womens_footwear(request):
     return render(request,'women-footware.html')
 
-
-
 def kids_tshirts(request):
     return render(request, 'kids-tshirts.html')
-
 
 def kids_dresses(request):
     return render(request, 'kids-dress.html')
@@ -54,10 +92,8 @@ def kids_toys(request):
 def kids_footwear(request):
     return render(request, 'kids-footware.html')
 
-
 def mens_shirt1_detailed(request):
     return render(request, 'mens-shirt1-detailed.html')
-
 
 def mens_shirt2_detailed(request):
     return render(request, 'mens-shirt2-detailed.html')
@@ -218,13 +254,11 @@ def kids_tshirt7_detailed(request):
 def kids_tshirt8_detailed(request):
     return render(request, 'kids-tshirts8-detailed.html')
 
-
 def kids_dress1_detailed(request):
     return render(request, 'kids-dress1-detailed.html')
 
 def kids_dress2_detailed(request):
     return render(request, 'kids-dress2-detailed.html')
-
 
 def kids_dress3_detailed(request):
     return render(request, 'kids-dress3-detailed.html')
@@ -243,8 +277,6 @@ def kids_dress7_detailed(request):
 
 def kids_dress8_detailed(request):
     return render(request, 'kids-dress8-detailed.html')
-
-
 
 def kids_toys1_detailed(request):
     return render(request, 'kids-toys1-detailed.html')
@@ -270,7 +302,6 @@ def kids_toys7_detailed(request):
 def kids_toys8_detailed(request):
     return render(request, 'kids-toys8-detailed.html')
 
-
 def kids_footware1_detailed(request):
     return render(request, 'kids-footware1-detailed.html')
 
@@ -285,7 +316,6 @@ def kids_footware4_detailed(request):
 
 def kids_footware5_detailed(request):
     return render(request, 'kids-footware5-detailed.html')
-
 
 def kids_footware6_detailed(request):
     return render(request, 'kids-footware6-detailed.html')

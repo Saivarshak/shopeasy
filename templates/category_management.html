@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Category Management - Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandPink: '#bd2a67ff',
+            brandCoral: '#ff5c39',
+            brandDark: '#2f2f2f',
+            brandMuted: '#5e5d5dff',
+            beige: '#dbbe9c',
+            adminBg: '#f3f4f6'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 52px;
+      height: 26px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: 0.3s;
+      border-radius: 26px;
+    }
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+    input:checked + .toggle-slider {
+      background-color: #bd2a67ff;
+    }
+    input:checked + .toggle-slider:before {
+      transform: translateX(26px);
+    }
+
+    .maintenance-toggle input:checked + .toggle-slider {
+      background-color: #ff5c39;
+    }
+  </style>
+</head>
+
+<body class="bg-adminBg text-brandDark">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md py-4">
+    <div class="max-w-5xl mx-auto px-6 flex justify-between items-center">
+      <a href="/">
+        <img src="{% static 'images/logo1.png' %}" alt="ShopEase Logo" class="h-14" />
+      </a>
+      <h1 class="text-2xl font-bold text-brandDark">Category Management</h1>
+      <nav class="flex space-x-4">
+        <a href="/" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full text-sm transition">Home</a>
+        <a href="/upload" class="bg-brandCoral hover:bg-orange-500 text-white px-4 py-2 rounded-full text-sm transition">Upload Product</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Success/Error Messages -->
+  {% if messages %}
+  <div class="max-w-5xl mx-auto px-6 mt-4">
+    {% for message in messages %}
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-2">
+      {{ message }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- Category Management Section -->
+  <main class="max-w-5xl mx-auto px-6 py-10">
+
+    {% if categories %}
+    <div class="bg-white rounded-xl shadow-lg p-6">
+      <h2 class="text-xl font-semibold text-brandDark mb-6">Manage Categories</h2>
+
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b-2 border-gray-200">
+              <th class="text-left py-3 px-4 font-semibold text-brandMuted">Category</th>
+              <th class="text-left py-3 px-4 font-semibold text-brandMuted">Active</th>
+              <th class="text-left py-3 px-4 font-semibold text-brandMuted">Under Maintenance</th>
+              <th class="text-left py-3 px-4 font-semibold text-brandMuted">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for category in categories %}
+            <tr class="border-b border-gray-100 hover:bg-gray-50">
+              <td class="py-4 px-4">
+                <div class="flex items-center space-x-3">
+                  <div class="w-12 h-12 rounded-lg overflow-hidden bg-gray-100">
+                    {% if category.name == "Men" %}
+                      <img src="{% static 'images/men.png' %}" alt="{{ category.name }}" class="w-full h-full object-cover" />
+                    {% elif category.name == "Women" %}
+                      <img src="{% static 'images/women.png' %}" alt="{{ category.name }}" class="w-full h-full object-cover" />
+                    {% elif category.name == "Kids" %}
+                      <img src="{% static 'images/kids.png' %}" alt="{{ category.name }}" class="w-full h-full object-cover" />
+                    {% endif %}
+                  </div>
+                  <div>
+                    <p class="font-semibold text-brandDark">{{ category.name }}</p>
+                    <p class="text-sm text-brandMuted">{{ category.description }}</p>
+                  </div>
+                </div>
+              </td>
+              <td class="py-4 px-4">
+                <form method="POST" action="/category-toggle/">
+                  {% csrf_token %}
+                  <input type="hidden" name="category_id" value="{{ category.id }}" />
+                  <input type="hidden" name="toggle_type" value="active" />
+                  <label class="toggle-switch">
+                    <input type="checkbox" name="is_active" 
+                           {% if category.is_active %}checked{% endif %} 
+                           onchange="this.form.submit()" />
+                    <span class="toggle-slider"></span>
+                  </label>
+                </form>
+              </td>
+              <td class="py-4 px-4">
+                <form method="POST" action="/category-toggle/">
+                  {% csrf_token %}
+                  <input type="hidden" name="category_id" value="{{ category.id }}" />
+                  <input type="hidden" name="toggle_type" value="maintenance" />
+                  <label class="toggle-switch maintenance-toggle">
+                    <input type="checkbox" name="under_maintenance" 
+                           {% if category.under_maintenance %}checked{% endif %} 
+                           onchange="this.form.submit()" />
+                    <span class="toggle-slider"></span>
+                  </label>
+              </td>
+              <td class="py-4 px-4">
+                {% if category.is_active and not category.under_maintenance %}
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                    Active
+                  </span>
+                {% elif category.under_maintenance %}
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800">
+                    Under Maintenance
+                  </span>
+                {% elif not category.is_active %}
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                    Inactive
+                  </span>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    {% else %}
+    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+      <p class="text-brandMuted">No categories found.</p>
+    </div>
+    {% endif %}
+
+    <!-- Info Box -->
+    <div class="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6">
+      <h3 class="text-lg font-semibold text-blue-900 mb-2">How it works:</h3>
+      <div class="text-sm text-blue-800 space-y-2">
+        <p><strong>Active ON + Under Maintenance OFF:</strong> Category works normally. Users can browse products.</p>
+        <p><strong>Active OFF + Under Maintenance ON:</strong> Category card stays visible on homepage, but clicking it shows the "Under Maintenance" page.</p>
+        <p><strong>Active OFF + Under Maintenance OFF:</strong> Category is hidden from the homepage.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-beige py-6 border-t mt-8">
+    <div class="w-full px-10 text-center text-sm text-brandMuted">
+      &copy; 2025 <strong class="text-brandDark">ShopEase</strong>. All rights reserved. | Built by <span class="text-brandCoral font-semibold">MR Technologies</span>
+    </div>
+  </footer>
+
+</body>
+</html>

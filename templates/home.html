@@ -113,7 +113,8 @@
       <a href="/" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full font-medium transition">Home</a>
       <a href="#" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full font-medium transition">Products</a>
       <a href="#" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full font-medium transition">Contact Us</a>
-      <a href="login" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full font-medium transition">Login</a>
+      <a href="/login" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full font-medium transition">Login</a>
+      <a href="/category-management" class="bg-brandPink hover:bg-pink-700 text-white px-4 py-2 rounded-full font-medium transition">Admin</a>
       </nav>
     </div>
 
@@ -150,38 +151,42 @@
     <h3 class="text-3xl font-semibold text-center text-brandDark  mb-12">🛍️ Shop by Category</h3>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-      <!-- Men -->
-   <a href="{% url 'category_men' %}" class="block">
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105">
-            <img src="{% static 'images/men.png' %}" alt="Men's Fashion" class="w-full h-64 object-cover" />
-            <div class="bg-white p-5 text-center">
-            <h4 class="text-2xl font-semibold text-brandDark">Men</h4>
-            <p class="text-brandMuted mt-2">Casual wear, formals, accessories and more.</p>
-            </div>
-        </div>
-    </a>
-
-      <!-- Women -->
-<a href="{% url 'category_women' %}" class="block">
-      <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105">
-        <img src="{% static 'images/women.png' %}" alt="Women's Fashion" class="w-full h-64 object-cover" />
-        <div class="bg-white p-5 text-center">
-          <h4 class="text-2xl font-semibold text-brandDark">Women</h4>
-          <p class="text-brandMuted mt-2">Ethnic, western, and everything chic!</p>
-        </div>
-      </div>
-</a>
-      <!-- Kids -->
-<a href="{% url 'category_kids' %}" class="block">
-      <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105">
-        <img src="{% static 'images/kids.png' %}" alt="Kids' Fashion" class="w-full h-64 object-cover" />
-        <div class="bg-white p-5 text-center">
-          <h4 class="text-2xl font-semibold text-brandDark">Kids</h4>
-          <p class="text-brandMuted mt-2">Trendy and comfy styles for kids of all ages.</p>
-        </div>
-      </div>
+      {% for category in categories %}
+        {% if category.is_active or category.under_maintenance %}
+          {% if category.slug == "men" %}
+            <a href="{% url 'category_men' %}" class="block">
+              <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105">
+                <img src="{% static 'images/men.png' %}" alt="Men's Fashion" class="w-full h-64 object-cover" />
+                <div class="bg-white p-5 text-center">
+                  <h4 class="text-2xl font-semibold text-brandDark">Men</h4>
+                  <p class="text-brandMuted mt-2">Casual wear, formals, accessories and more.</p>
+                </div>
+              </div>
+            </a>
+          {% elif category.slug == "women" %}
+            <a href="{% url 'category_women' %}" class="block">
+              <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105">
+                <img src="{% static 'images/women.png' %}" alt="Women's Fashion" class="w-full h-64 object-cover" />
+                <div class="bg-white p-5 text-center">
+                  <h4 class="text-2xl font-semibold text-brandDark">Women</h4>
+                  <p class="text-brandMuted mt-2">Ethnic, western, and everything chic!</p>
+                </div>
+              </div>
+            </a>
+          {% elif category.slug == "kids" %}
+            <a href="{% url 'category_kids' %}" class="block">
+              <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105">
+                <img src="{% static 'images/kids.png' %}" alt="Kids' Fashion" class="w-full h-64 object-cover" />
+                <div class="bg-white p-5 text-center">
+                  <h4 class="text-2xl font-semibold text-brandDark">Kids</h4>
+                  <p class="text-brandMuted mt-2">Trendy and comfy styles for kids of all ages.</p>
+                </div>
+              </div>
+            </a>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
     </div>
-  </a>
   </section>
 
   <!-- Footer -->
